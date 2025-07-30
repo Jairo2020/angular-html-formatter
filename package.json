@@ -1,0 +1,103 @@
+{
+  "name": "angular20-html-formatter",
+  "displayName": "Angular HTML Formatter",
+  "description": "Formatea templates HTML de Angular con la nueva sintaxis de bloques de control (@if, @for, @switch, etc.)",
+  "version": "1.0.0",
+  "publisher": "tu-nombre-editor",
+  "author": {
+    "name": "Tu Nombre",
+    "email": "tu-email@example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/angular20-html-formatter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tu-usuario/angular20-html-formatter/issues"
+  },
+  "homepage": "https://github.com/tu-usuario/angular20-html-formatter#readme",
+  "keywords": [
+    "angular",
+    "html",
+    "formatter",
+    "control-flow",
+    "template",
+    "format",
+    "prettier",
+    "angular17",
+    "angular18",
+    "angular19",
+    "angular20"
+  ],
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#dd0031",
+    "theme": "dark"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "angular20-html-formatter.formatDocument",
+        "title": "Format Angular HTML"
+      },
+      {
+        "command": "angular20-html-formatter.formatSelection",
+        "title": "Format Angular HTML Selection"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "angular20-html-formatter.formatDocument",
+        "key": "ctrl+shift+alt+f",
+        "when": "editorTextFocus && resourceExtname == .html"
+      }
+    ],
+    "languages": [
+      {
+        "id": "html",
+        "aliases": [
+          "HTML",
+          "html"
+        ],
+        "extensions": [
+          ".html"
+        ]
+      }
+    ],
+    "documentFormattingProviders": [
+      {
+        "language": "html",
+        "provider": "angular20-html-formatter"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.102.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
