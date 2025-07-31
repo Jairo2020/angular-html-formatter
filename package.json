@@ -47,17 +47,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "angular20-html-formatter.formatDocument",
+        "command": "angular-html-formatter.formatDocument",
         "title": "Format Angular HTML"
       },
       {
-        "command": "angular20-html-formatter.formatSelection",
+        "command": "angular-html-formatter.formatSelection",
         "title": "Format Angular HTML Selection"
       }
     ],
     "keybindings": [
       {
-        "command": "angular20-html-formatter.formatDocument",
+        "command": "angular-html-formatter.formatDocument",
         "key": "ctrl+shift+alt+f",
         "when": "editorTextFocus && resourceExtname == .html"
       }
@@ -72,12 +72,6 @@
         "extensions": [
           ".html"
         ]
-      }
-    ],
-    "documentFormattingProviders": [
-      {
-        "language": "html",
-        "provider": "angular20-html-formatter"
       }
     ]
   },

@@ -71,7 +71,24 @@ export function activate(context: vscode.ExtensionContext) {
 	const formatDocumentCommand = vscode.commands.registerCommand(
 		'angular-html-formatter.formatDocument',
 		() => {
-			vscode.commands.executeCommand('editor.action.formatDocument');
+			const editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				vscode.window.showInformationMessage('No active editor found.');
+				return;
+			}
+
+			const document = editor.document;
+			const options = IndentationDetector.getIndentationOptions(document);
+			const formattedText = AngularHtmlFormatter.format(document.getText(), options);
+
+			const fullRange = new vscode.Range(
+				document.positionAt(0),
+				document.positionAt(document.getText().length)
+			);
+
+			const edit = new vscode.WorkspaceEdit();
+			edit.replace(document.uri, fullRange, formattedText);
+			vscode.workspace.applyEdit(edit);
 		}
 	);
 
@@ -79,7 +96,27 @@ export function activate(context: vscode.ExtensionContext) {
 	const formatSelectionCommand = vscode.commands.registerCommand(
 		'angular-html-formatter.formatSelection',
 		() => {
-			vscode.commands.executeCommand('editor.action.formatSelection');
+			const editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				vscode.window.showInformationMessage('No active editor found.');
+				return;
+			}
+
+			const document = editor.document;
+			const selection = editor.selection;
+
+			if (selection.isEmpty) {
+				vscode.window.showInformationMessage('No text selected.');
+				return;
+			}
+
+			const selectedText = document.getText(selection);
+			const options = IndentationDetector.getIndentationOptions(document);
+			const formattedText = AngularHtmlFormatter.format(selectedText, options);
+
+			const edit = new vscode.WorkspaceEdit();
+			edit.replace(document.uri, selection, formattedText);
+			vscode.workspace.applyEdit(edit);
 		}
 	);
 
