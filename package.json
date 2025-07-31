@@ -1,7 +1,7 @@
 {
   "name": "angular-html-formatter",
   "displayName": "Angular Formatter",
-  "description": "Formatea templates HTML de Angular con la nueva sintaxis de bloques de control (@if, @for, @switch, etc.)",
+  "description": "Formatea templates HTML de Angular con la nueva sintaxis de bloques de control (@if, @for, @switch, etc.) y soporte completo para interpolaciones {{ }} respetando exactamente el espaciado del usuario",
   "version": "1.0.0",
   "publisher": "JairoDeveloper",
   "author": {
@@ -40,7 +40,9 @@
     "Formatters",
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:html"
+  ],
   "main": "./out/extension.js",
   "icon": "icon.png",
   "galleryBanner": {
@@ -91,25 +93,25 @@
       "type": "object",
       "title": "Angular HTML Formatter",
       "properties": {
-        "angular-html-formatter.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable/disable Angular HTML formatter"
-        },
         "angular-html-formatter.indentSize": {
           "type": "number",
           "default": 2,
           "description": "Number of spaces for indentation"
         },
-        "angular-html-formatter.formatOnSave": {
-          "type": "boolean",
-          "default": false,
-          "description": "Format HTML files on save"
-        },
-        "angular-html-formatter.preserveNewLines": {
+        "angular-html-formatter.inlineShortElements": {
           "type": "boolean",
           "default": true,
-          "description": "Preserve existing new lines"
+          "description": "Keep short HTML elements on a single line"
+        },
+        "angular-html-formatter.shortElementThreshold": {
+          "type": "number",
+          "default": 80,
+          "description": "Maximum length for elements to be considered 'short' and kept inline"
+        },
+        "angular-html-formatter.preserveUserMultiline": {
+          "type": "boolean",
+          "default": true,
+          "description": "Respect user's choice to put elements on multiple lines"
         }
       }
     }

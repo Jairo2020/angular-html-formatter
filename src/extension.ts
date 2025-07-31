@@ -6,6 +6,19 @@
 import * as vscode from 'vscode';
 import { AngularHtmlFormatter } from './formatter';
 import { IndentationDetector } from './indentation';
+import { FormattingOptions } from './types';
+
+function getFormattingOptions(document: vscode.TextDocument): FormattingOptions {
+	const config = vscode.workspace.getConfiguration('angular-html-formatter');
+	const indentationOptions = IndentationDetector.getIndentationOptions(document);
+
+	return {
+		...indentationOptions,
+		inlineShortElements: config.get('inlineShortElements', true),
+		shortElementThreshold: config.get('shortElementThreshold', 80),
+		preserveUserMultiline: config.get('preserveUserMultiline', true)
+	};
+}
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Angular HTML Formatter is now active!');
@@ -20,7 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
 					document.positionAt(document.getText().length)
 				);
 
-				const options = IndentationDetector.getIndentationOptions(document);
+				const options = getFormattingOptions(document);
 				const formattedText = AngularHtmlFormatter.format(document.getText(), options);
 
 				return [vscode.TextEdit.replace(fullRange, formattedText)];
@@ -37,32 +50,10 @@ export function activate(context: vscode.ExtensionContext) {
 				range: vscode.Range
 			): vscode.TextEdit[] {
 				const selectedText = document.getText(range);
-				const options = IndentationDetector.getIndentationOptions(document);
+				const options = getFormattingOptions(document);
 				const formattedText = AngularHtmlFormatter.format(selectedText, options);
 
 				return [vscode.TextEdit.replace(range, formattedText)];
-			}
-		}
-	);
-
-	// Register manual formatting command
-	const formatCommand = vscode.commands.registerCommand(
-		'angular-html-formatter.format',
-		() => {
-			const editor = vscode.window.activeTextEditor;
-			if (!editor) {
-				vscode.window.showInformationMessage('No active editor found.');
-				return;
-			}
-
-			const selection = editor.selection;
-
-			if (selection.isEmpty) {
-				// Format entire document
-				vscode.commands.executeCommand('editor.action.formatDocument');
-			} else {
-				// Format selection
-				vscode.commands.executeCommand('editor.action.formatSelection');
 			}
 		}
 	);
@@ -78,7 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 
 			const document = editor.document;
-			const options = IndentationDetector.getIndentationOptions(document);
+			const options = getFormattingOptions(document);
 			const formattedText = AngularHtmlFormatter.format(document.getText(), options);
 
 			const fullRange = new vscode.Range(
@@ -111,7 +102,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 
 			const selectedText = document.getText(selection);
-			const options = IndentationDetector.getIndentationOptions(document);
+			const options = getFormattingOptions(document);
 			const formattedText = AngularHtmlFormatter.format(selectedText, options);
 
 			const edit = new vscode.WorkspaceEdit();
@@ -124,7 +115,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		documentFormattingProvider,
 		rangeFormattingProvider,
-		formatCommand,
 		formatDocumentCommand,
 		formatSelectionCommand
 	);

@@ -12,6 +12,11 @@ export class BlockAnalyzer {
    * Check if a line represents an opening block
    */
   static isOpeningBlock(line: string): boolean {
+    // Don't treat {{ as opening block if it's part of interpolation
+    if (this.isAngularInterpolation(line)) {
+      return false;
+    }
+
     // Angular control flow blocks that open a new scope
     const angularControlPattern = /@(?:if|else|for|switch|case|default|defer|loading|error|placeholder)\s*(\([^)]*\))?\s*\{/;
     if (angularControlPattern.test(line)) {
@@ -36,6 +41,11 @@ export class BlockAnalyzer {
    */
   static isClosingBlock(line: string): boolean {
     const trimmed = line.trim();
+
+    // Don't treat }} as closing block if it's part of interpolation
+    if (this.isAngularInterpolation(trimmed)) {
+      return false;
+    }
 
     // Angular control flow closing
     if (trimmed === '@}' || trimmed === '}') {
@@ -68,5 +78,12 @@ export class BlockAnalyzer {
     }
 
     return false;
+  }
+
+  /**
+   * Check if a line contains Angular interpolation {{ }}
+   */
+  static isAngularInterpolation(line: string): boolean {
+    return line.includes('{{') && line.includes('}}');
   }
 }
