@@ -1,22 +1,22 @@
 {
-  "name": "angular-formatter",
+  "name": "angular-html-formatter",
   "displayName": "Angular Formatter",
   "description": "Formatea templates HTML de Angular con la nueva sintaxis de bloques de control (@if, @for, @switch, etc.)",
   "version": "1.0.0",
-  "publisher": "tu-nombre-editor",
+  "publisher": "JairoDeveloper",
   "author": {
-    "name": "Tu Nombre",
-    "email": "tu-email@example.com"
+    "name": "Jairo Rohatan",
+    "email": "soporterohatan@gmail.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tu-usuario/angular-formatter.git"
+    "url": "https://github.com/Jairo2020/angular-html-formatter.git"
   },
   "bugs": {
-    "url": "https://github.com/tu-usuario/angular-formatter/issues"
+    "url": "https://github.com/Jairo2020/angular-html-formatter/issues"
   },
-  "homepage": "https://github.com/tu-usuario/angular-formatter#readme",
+  "homepage": "https://github.com/Jairo2020/angular-html-formatter#readme",
   "keywords": [
     "angular",
     "formatter",

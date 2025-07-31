@@ -19,7 +19,6 @@
   - Preserva comentarios y contenido HTML
   - Manejo inteligente de bloques anidados
   - Formateo de documentos completos y selecciones
-  - Arquitectura modular y extensible
 
 ## 🚀 Uso Rápido
 
@@ -73,32 +72,6 @@
 </div>
 ```
 
-## ⚙️ Configuración Automática
-
-La extensión se integra perfectamente con tu configuración de VS Code:
-
-```json
-{
-  "editor.insertSpaces": true,     // Usa espacios (default)
-  "editor.tabSize": 2,            // 2 espacios por nivel
-  "editor.detectIndentation": true // Detección automática
-}
-```
-
-## 🏗️ Arquitectura Modular
-
-La extensión está construida con una arquitectura limpia y escalable:
-
-```
-src/
-├── extension.ts         # Punto de entrada VS Code
-├── types.ts            # Definiciones TypeScript
-├── indentation.ts      # Detector de configuración
-├── tokenizer.ts        # Analizador Angular/HTML
-├── block-analyzer.ts   # Detector de bloques
-└── formatter.ts        # Lógica de formateo
-```
-
 ## 📦 Instalación
 
 ### Desde VS Code Marketplace:
@@ -112,72 +85,7 @@ src/
 code --install-extension angular20-html-formatter-1.0.0.vsix
 ```
 
-## 🔧 Desarrollo
-
-```bash
-# Clonar repositorio
-git clone https://github.com/tu-usuario/angular20-html-formatter.git
-
-# Instalar dependencias
-npm install
-
-# Compilar
-npm run compile
-
-# Modo desarrollo
-npm run watch
-
-# Ejecutar tests
-npm test
-```
-
-## 🤝 Contribuir
-
-¡Las contribuciones son bienvenidas! Por favor:
-
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-caracteristica`)
-3. Commit tus cambios (`git commit -am 'Agrega nueva característica'`)
-4. Push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abre un Pull Request
-
-## 📋 Requisitos
-
-- Visual Studio Code 1.74.0 o superior
-- Node.js 16+ (para desarrollo)
-
-## 📄 Licencia
-
-MIT License - ve [LICENSE](LICENSE) para más detalles.
-
-## 🐛 Reportar Issues
-
-¿Encontraste un bug? [Abre un issue](https://github.com/tu-usuario/angular20-html-formatter/issues) con:
-- Descripción del problema
-- Código de ejemplo
-- Versión de VS Code
-- Steps para reproducir
-
----
-
-**¡Hecho con ❤️ para la comunidad Angular!** 🅰️
-      <div class="item">{{item.name}}</div>
-    }
-  </div>
-} @else {
-  <div class="login">Inicia sesión</div>
-}
-```
-
-## Instalación para Desarrollo
-
-1. Clona este repositorio
-2. Ejecuta `npm install`
-3. Abre el proyecto en VS Code
-4. Presiona `F5` para abrir una nueva ventana de VS Code con la extensión cargada
-5. Abre un archivo HTML con sintaxis de Angular y prueba el formateo
-
-## Configuración
+## ⚙️ Configuración
 
 La extensión respeta automáticamente la configuración de indentación de VS Code:
 
@@ -230,13 +138,22 @@ La extensión respeta automáticamente la configuración de indentación de VS C
 }
 ```
 
-## Contribuir
+## 📋 Requisitos
 
-Si encuentras algún problema o tienes sugerencias de mejora, por favor:
-1. Abre un issue describiendo el problema
-2. Incluye ejemplos de código que no se formatean correctamente
-3. Especifica la versión de Angular que estás usando
+- Visual Studio Code 1.74.0 o superior
 
-## Licencia
+## 📄 Licencia
 
 MIT
+
+## 🐛 Reportar Issues
+
+¿Encontraste un bug? [Abre un issue](https://github.com/tu-usuario/angular20-html-formatter/issues) con:
+- Descripción del problema
+- Código de ejemplo
+- Versión de VS Code
+- Steps para reproducir
+
+---
+
+**¡Hecho con ❤️ para la comunidad Angular!** 🅰️
