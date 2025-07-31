@@ -76,7 +76,43 @@
           ".html"
         ]
       }
-    ]
+    ],
+    "documentFormattingProvider": [
+      {
+        "language": "html"
+      }
+    ],
+    "documentRangeFormattingProvider": [
+      {
+        "language": "html"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Angular HTML Formatter",
+      "properties": {
+        "angular-html-formatter.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable Angular HTML formatter"
+        },
+        "angular-html-formatter.indentSize": {
+          "type": "number",
+          "default": 2,
+          "description": "Number of spaces for indentation"
+        },
+        "angular-html-formatter.formatOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Format HTML files on save"
+        },
+        "angular-html-formatter.preserveNewLines": {
+          "type": "boolean",
+          "default": true,
+          "description": "Preserve existing new lines"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
