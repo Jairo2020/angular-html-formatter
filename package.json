@@ -1,6 +1,6 @@
 {
-  "name": "angular20-html-formatter",
-  "displayName": "Angular HTML Formatter",
+  "name": "angular-formatter",
+  "displayName": "Angular Formatter",
   "description": "Formatea templates HTML de Angular con la nueva sintaxis de bloques de control (@if, @for, @switch, etc.)",
   "version": "1.0.0",
   "publisher": "tu-nombre-editor",
@@ -11,24 +11,27 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tu-usuario/angular20-html-formatter.git"
+    "url": "https://github.com/tu-usuario/angular-formatter.git"
   },
   "bugs": {
-    "url": "https://github.com/tu-usuario/angular20-html-formatter/issues"
+    "url": "https://github.com/tu-usuario/angular-formatter/issues"
   },
-  "homepage": "https://github.com/tu-usuario/angular20-html-formatter#readme",
+  "homepage": "https://github.com/tu-usuario/angular-formatter#readme",
   "keywords": [
     "angular",
-    "html",
     "formatter",
-    "control-flow",
-    "template",
     "format",
-    "prettier",
+    "html",
+    "template",
+    "control-flow",
+    "@if",
+    "@for",
+    "@switch",
     "angular17",
     "angular18",
     "angular19",
-    "angular20"
+    "angular20",
+    "prettier"
   ],
   "engines": {
     "vscode": "^1.102.0"
